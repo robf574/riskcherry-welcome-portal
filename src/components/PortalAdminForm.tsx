@@ -230,25 +230,6 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name */}
-              <div className="space-y-2">
-                <Label htmlFor="fullName" className="text-base font-medium">
-                  First Name / Last Name *
-                </Label>
-                <Input
-                  id="fullName"
-                  type="text"
-                  placeholder="Enter your full name"
-                  value={formData.fullName}
-                  onChange={(e) => handleInputChange('fullName', e.target.value)}
-                  required
-                  className="h-12"
-                />
-                <p className="text-sm text-muted-foreground">
-                  This will be used for your portal administrator profile
-                </p>
-              </div>
-
               {/* Studio Information */}
               <div className="space-y-2">
                 <Label htmlFor="studioName" className="text-base font-medium">
@@ -360,6 +341,25 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
                   )}
                 </div>
               )}
+
+              {/* Full Name */}
+              <div className="space-y-2">
+                <Label htmlFor="fullName" className="text-base font-medium">
+                  First Name / Last Name *
+                </Label>
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={formData.fullName}
+                  onChange={(e) => handleInputChange('fullName', e.target.value)}
+                  required
+                  className="h-12"
+                />
+                <p className="text-sm text-muted-foreground">
+                  This will be used for your portal administrator profile
+                </p>
+              </div>
 
               {/* Email */}
               <div className="space-y-2">
