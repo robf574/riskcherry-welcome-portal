@@ -217,13 +217,13 @@ const LegalCommercialOnboarding = ({ onBack, onComplete }: LegalCommercialOnboar
           <CardHeader>
             <CardTitle>Need Assistance?</CardTitle>
             <CardDescription>
-              Contact TAM@riskcherry.com for any help with legal and commercial requirements
+              Contact onboarding@riskcherry.com for any help with legal and commercial requirements
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Button variant="outline" asChild>
-              <a href="mailto:TAM@riskcherry.com">
-                Contact TAM@riskcherry.com
+              <a href="mailto:onboarding@riskcherry.com">
+                Contact Us
               </a>
             </Button>
           </CardContent>

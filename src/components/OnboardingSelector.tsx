@@ -169,13 +169,13 @@ const OnboardingSelector = () => {
           <CardHeader>
             <CardTitle>Need Assistance?</CardTitle>
             <CardDescription>
-              Contact TAM@riskcherry.com for any help through the process
+              Contact onboarding@riskcherry.com for any help through the process
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Button variant="outline" asChild>
-              <a href="mailto:TAM@riskcherry.com">
-                Contact TAM@riskcherry.com
+              <a href="mailto:onboarding@riskcherry.com">
+                Contact Us
               </a>
             </Button>
           </CardContent>

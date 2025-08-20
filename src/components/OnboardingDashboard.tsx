@@ -206,14 +206,14 @@ const OnboardingDashboard = () => {
           <CardHeader>
             <CardTitle>Need Assistance?</CardTitle>
             <CardDescription>
-              Contact TAM@riskcherry.com for any more help through the process
+              Contact onboarding@riskcherry.com for any more help through the process
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="outline" asChild>
-                <a href="mailto:TAM@riskcherry.com">
-                  Contact TAM@riskcherry.com
+                <a href="mailto:onboarding@riskcherry.com">
+                  Contact Us
                 </a>
               </Button>
             </div>
