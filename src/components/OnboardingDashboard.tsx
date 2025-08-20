@@ -195,10 +195,6 @@ const OnboardingDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="outline" className="gap-2">
-                <Download className="w-4 h-4" />
-                Download Setup Guide
-              </Button>
               <Button variant="outline" asChild>
                 <a href="mailto:TAM@riskcherry.com">
                   Contact TAM@riskcherry.com

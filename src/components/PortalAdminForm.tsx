@@ -259,7 +259,7 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
                   <Input
                     id="studioName"
                     type="text"
-                    placeholder="Your Game Studio Ltd."
+                    placeholder="Your Game Studio"
                     value={formData.studioName}
                     onChange={(e) => handleInputChange('studioName', e.target.value)}
                     required
