@@ -16,9 +16,8 @@ interface PortalAdminFormProps {
 const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    username: '',
+    fullName: '',
     email: '',
-    confirmEmail: '',
     ipAddresses: [''],
     additionalNotes: ''
   });
@@ -72,10 +71,10 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
     setIsSubmitting(true);
 
     // Validation
-    if (!formData.username.trim()) {
+    if (!formData.fullName.trim()) {
       toast({
         title: "Validation Error",
-        description: "Username is required",
+        description: "Full name is required",
         variant: "destructive"
       });
       setIsSubmitting(false);
@@ -92,15 +91,6 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
       return;
     }
 
-    if (formData.email !== formData.confirmEmail) {
-      toast({
-        title: "Validation Error",
-        description: "Email addresses do not match",
-        variant: "destructive"
-      });
-      setIsSubmitting(false);
-      return;
-    }
 
     const validIps = formData.ipAddresses.filter(ip => ip.trim());
     if (validIps.length === 0) {
@@ -179,56 +169,40 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Username */}
+              {/* Full Name */}
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-base font-medium">
-                  Username *
+                <Label htmlFor="fullName" className="text-base font-medium">
+                  First Name / Last Name *
                 </Label>
                 <Input
-                  id="username"
+                  id="fullName"
                   type="text"
-                  placeholder="Enter administrator username"
-                  value={formData.username}
-                  onChange={(e) => handleInputChange('username', e.target.value)}
+                  placeholder="Enter your full name"
+                  value={formData.fullName}
+                  onChange={(e) => handleInputChange('fullName', e.target.value)}
                   required
                   className="h-12"
                 />
                 <p className="text-sm text-muted-foreground">
-                  This will be your login username for the portal
+                  This will be used for your portal administrator profile
                 </p>
               </div>
 
               {/* Email */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base font-medium">
-                    Email Address *
-                  </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="admin@yourstudio.com"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      required
-                      className="h-12 pl-10"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="confirmEmail" className="text-base font-medium">
-                    Confirm Email *
-                  </Label>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-base font-medium">
+                  Email Address *
+                </Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
-                    id="confirmEmail"
+                    id="email"
                     type="email"
-                    placeholder="Confirm email address"
-                    value={formData.confirmEmail}
-                    onChange={(e) => handleInputChange('confirmEmail', e.target.value)}
+                    placeholder="admin@yourstudio.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
                     required
-                    className="h-12"
+                    className="h-12 pl-10"
                   />
                 </div>
               </div>

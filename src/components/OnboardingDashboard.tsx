@@ -13,7 +13,6 @@ import {
   LogOut
 } from "lucide-react";
 import PortalAdminForm from "./PortalAdminForm";
-import GameStudioForm from "./GameStudioForm";
 import DocumentLibrary from "./DocumentLibrary";
 
 interface OnboardingStep {
@@ -39,13 +38,6 @@ const OnboardingDashboard = () => {
       title: 'Portal Admin Setup',
       description: 'Configure your portal administrator account details',
       icon: <User className="w-5 h-5" />,
-      status: 'pending'
-    },
-    {
-      id: 'game-studio',
-      title: 'Game Studio Information',
-      description: 'Provide your game studio details and requirements',
-      icon: <Building className="w-5 h-5" />,
       status: 'pending'
     }
   ]);
@@ -96,12 +88,6 @@ const OnboardingDashboard = () => {
             <PortalAdminForm 
               onBack={() => setCurrentStep(null)} 
               onComplete={() => handleStepComplete('portal-admin')}
-            />
-          )}
-          {currentStep === 'game-studio' && (
-            <GameStudioForm 
-              onBack={() => setCurrentStep(null)} 
-              onComplete={() => handleStepComplete('game-studio')}
             />
           )}
         </div>
@@ -156,7 +142,7 @@ const OnboardingDashboard = () => {
         </Card>
 
         {/* Steps */}
-        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
           {steps.map((step, index) => (
             <Card 
               key={step.id} 
@@ -204,7 +190,7 @@ const OnboardingDashboard = () => {
           <CardHeader>
             <CardTitle>Need Assistance?</CardTitle>
             <CardDescription>
-              Our team is here to help you through the onboarding process
+              Contact TAM@riskcherry.com for any more help through the process
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -213,8 +199,10 @@ const OnboardingDashboard = () => {
                 <Download className="w-4 h-4" />
                 Download Setup Guide
               </Button>
-              <Button variant="outline">
-                Contact Support Team
+              <Button variant="outline" asChild>
+                <a href="mailto:TAM@riskcherry.com">
+                  Contact TAM@riskcherry.com
+                </a>
               </Button>
             </div>
           </CardContent>
