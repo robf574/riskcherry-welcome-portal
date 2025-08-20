@@ -134,34 +134,46 @@ const MasterServiceAgreement = ({ onBack, onComplete }: MasterServiceAgreementPr
           <CardContent>
             <div className="space-y-6">
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse border border-border">
-                  <thead>
-                    <tr>
-                      <th className="border border-border p-3 bg-muted text-left font-semibold">
-                        Service Type
-                      </th>
-                      {marketColumns.map((column, index) => (
-                        <th key={index} className="border border-border p-3 bg-muted text-left font-semibold">
-                          {column}
+                <div className="relative">
+                  <table className="w-full border-collapse border border-border">
+                    <thead>
+                      <tr>
+                        <th className="border border-border p-3 bg-muted text-left font-semibold">
+                          Service Type
                         </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {serviceTypes.map((service, rowIndex) => (
-                      <tr key={rowIndex}>
-                        <td className="border border-border p-3 font-medium bg-muted/30">
-                          {service}
-                        </td>
-                        {marketColumns.map((_, colIndex) => (
-                          <td key={colIndex} className="border border-border p-3 text-center text-muted-foreground">
-                            -
-                          </td>
+                        {marketColumns.map((column, index) => (
+                          <th key={index} className="border border-border p-3 bg-muted text-left font-semibold">
+                            {column}
+                          </th>
                         ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {serviceTypes.map((service, rowIndex) => (
+                        <tr key={rowIndex}>
+                          <td className="border border-border p-3 font-medium bg-muted/30">
+                            {service}
+                          </td>
+                          {marketColumns.map((_, colIndex) => (
+                            <td key={colIndex} className="border border-border p-3 text-center text-muted-foreground">
+                              -
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  
+                  {/* Draft overlay */}
+                  <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
+                    <div className="bg-card border-2 border-dashed border-primary/50 p-6 rounded-lg text-center">
+                      <p className="text-lg font-semibold text-primary mb-2">DRAFT</p>
+                      <p className="text-sm text-muted-foreground">
+                        POPULATED AFTER PRICING QUESTIONS ARE COMPLETE
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-6 p-4 bg-muted/50 rounded-lg">
