@@ -51,17 +51,17 @@ const MasterServiceAgreement = ({ onBack, onComplete }: MasterServiceAgreementPr
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex items-center gap-4 mb-8">
-        <Button variant="outline" onClick={onBack}>
-          <ArrowLeft className="w-4 h-4 mr-2" />
+        <Button variant="secondary" onClick={onBack} className="gap-2 bg-card text-card-foreground hover:bg-card/90">
+          <ArrowLeft className="w-4 h-4" />
           Back
         </Button>
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <Scale className="w-4 h-4 text-primary-foreground" />
+          <div className="w-8 h-8 bg-card rounded-full flex items-center justify-center shadow-lg">
+            <Scale className="w-4 h-4 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold">Master Service Agreement</h1>
-            <p className="text-muted-foreground">Review service agreement and pricing schedule</p>
+            <h1 className="text-2xl font-bold text-card">Master Service Agreement</h1>
+            <p className="text-card/80">Review service agreement and pricing schedule</p>
           </div>
         </div>
       </div>

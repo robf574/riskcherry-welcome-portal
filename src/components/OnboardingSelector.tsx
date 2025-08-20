@@ -49,22 +49,22 @@ const OnboardingSelector = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold">🍒</span>
+            <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-primary font-bold text-xl">🍒</span>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-primary-foreground mb-4">RiskCherry Client Onboarding</h1>
-              <p className="text-primary-foreground/90 mb-8">
+              <h1 className="text-3xl font-bold text-card mb-2">RiskCherry Client Onboarding</h1>
+              <p className="text-card/80 text-lg">
                 Your simple path to fast certifications & audits. We will guide you through your complete journey from legal & commercial to lab & technical onboarding where you will get Portal access to quickly place your first order! Let's get started!
               </p>
             </div>
           </div>
-          <Button variant="outline" onClick={handleLogout} className="gap-2">
+          <Button variant="secondary" onClick={handleLogout} className="gap-2 bg-card text-card-foreground hover:bg-card/90">
             <LogOut className="w-4 h-4" />
             Logout
           </Button>

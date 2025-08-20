@@ -121,21 +121,21 @@ const LegalCommercialOnboarding = ({ onBack, onComplete }: LegalCommercialOnboar
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div className="flex items-center gap-3">
-            <Button variant="outline" onClick={onBack} className="gap-2">
+            <Button variant="secondary" onClick={onBack} className="gap-2 bg-card text-card-foreground hover:bg-card/90">
               <ArrowLeft className="w-4 h-4" />
               Back
             </Button>
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <Scale className="w-5 h-5 text-primary-foreground" />
+            <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center shadow-lg">
+              <Scale className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">RiskCherry Client Onboarding - Legal & Commercial</h1>
-              <p className="text-muted-foreground">Complete legal agreements and commercial setup</p>
+              <h1 className="text-2xl font-bold text-card">RiskCherry Client Onboarding - Legal & Commercial</h1>
+              <p className="text-card/80">Complete legal agreements and commercial setup</p>
             </div>
           </div>
         </div>
