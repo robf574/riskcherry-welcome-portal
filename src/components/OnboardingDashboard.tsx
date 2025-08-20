@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import PortalAdminForm from "./PortalAdminForm";
 import DocumentLibrary from "./DocumentLibrary";
+import BookingCalendar from "./BookingCalendar";
 
 interface OnboardingStep {
   id: string;
@@ -38,6 +39,13 @@ const OnboardingDashboard = () => {
       title: 'Portal Admin Setup',
       description: 'Configure your portal administrator account details',
       icon: <User className="w-5 h-5" />,
+      status: 'pending'
+    },
+    {
+      id: 'book-demo',
+      title: 'Book Demo & Intro Call',
+      description: 'Schedule a demo session and introduction call with our team',
+      icon: <Building className="w-5 h-5" />,
       status: 'pending'
     }
   ]);
@@ -88,6 +96,12 @@ const OnboardingDashboard = () => {
             <PortalAdminForm 
               onBack={() => setCurrentStep(null)} 
               onComplete={() => handleStepComplete('portal-admin')}
+            />
+          )}
+          {currentStep === 'book-demo' && (
+            <BookingCalendar 
+              onBack={() => setCurrentStep(null)} 
+              onComplete={() => handleStepComplete('book-demo')}
             />
           )}
         </div>
@@ -142,7 +156,7 @@ const OnboardingDashboard = () => {
         </Card>
 
         {/* Steps */}
-        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
           {steps.map((step, index) => (
             <Card 
               key={step.id} 
@@ -165,11 +179,13 @@ const OnboardingDashboard = () => {
                       ) : step.status === 'in-progress' ? (
                         <Clock className="w-5 h-5" />
                       ) : (
-                        step.icon
+                        <span className="text-sm font-semibold">{index + 1}</span>
                       )}
                     </div>
                     <div>
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
+                      <CardTitle className="text-lg">
+                        Step {index + 1}/{steps.length}: {step.title}
+                      </CardTitle>
                     </div>
                   </div>
                   <Badge className={getStatusColor(step.status)}>
