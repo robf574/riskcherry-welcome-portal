@@ -34,13 +34,22 @@ const DocumentLibrary = ({ onBack, onComplete }: DocumentLibraryProps) => {
 
   const documents: Document[] = [
     {
+      id: 'riskcherry-policy',
+      title: 'RiskCherry Policy : Client Testing & Order Submission Disclaimer',
+      description: 'Important policy document regarding client testing procedures and order submission requirements',
+      type: 'pdf',
+      size: '850 KB',
+      category: 'compliance',
+      isRequired: true
+    },
+    {
       id: 'portal-user-guide',
       title: 'Portal User Guide',
       description: 'Complete guide for using the RiskCherry certification portal',
       type: 'pdf',
       size: '2.1 MB',
       category: 'technical',
-      isRequired: true
+      isRequired: false
     },
     {
       id: 'game-provisions-guide',
@@ -49,7 +58,7 @@ const DocumentLibrary = ({ onBack, onComplete }: DocumentLibraryProps) => {
       type: 'pdf',
       size: '1.8 MB',
       category: 'compliance',
-      isRequired: true
+      isRequired: false
     },
     {
       id: 'rng-provisions-guide',
@@ -58,7 +67,7 @@ const DocumentLibrary = ({ onBack, onComplete }: DocumentLibraryProps) => {
       type: 'pdf',
       size: '1.5 MB',
       category: 'technical',
-      isRequired: true
+      isRequired: false
     },
     {
       id: 'ukgc-agta-guide',
@@ -67,7 +76,7 @@ const DocumentLibrary = ({ onBack, onComplete }: DocumentLibraryProps) => {
       type: 'pdf',
       size: '2.4 MB',
       category: 'compliance',
-      isRequired: true
+      isRequired: false
     }
   ];
 
