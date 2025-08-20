@@ -116,7 +116,11 @@ const OnboardingDashboard = () => {
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-primary font-bold text-xl">🍒</span>
+              <img 
+                src="/lovable-uploads/bcc431a8-eb4f-49f8-bf3d-cfb3c5e7b3ec.png" 
+                alt="RiskCherry Logo" 
+                className="w-8 h-8 object-contain"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-card">RiskCherry Client Onboarding - Lab</h1>
