@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import TokenAccess from "@/components/TokenAccess";
-import OnboardingDashboard from "@/components/OnboardingDashboard";
+import OnboardingSelector from "@/components/OnboardingSelector";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -36,7 +36,7 @@ const Index = () => {
     return <TokenAccess onTokenValidated={handleTokenValidated} />;
   }
 
-  return <OnboardingDashboard />;
+  return <OnboardingSelector />;
 };
 
 export default Index;
