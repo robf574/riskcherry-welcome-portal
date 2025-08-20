@@ -44,30 +44,9 @@ const MasterServiceAgreement = ({ onBack, onComplete }: MasterServiceAgreementPr
     }, 1500);
   };
 
-  // Sample pricing data - this would come from your backend/API
-  const pricingSchedule = [
-    {
-      tier: "Starter",
-      volume: "Up to 1,000 tests/month",
-      pricePerTest: "$0.50",
-      monthlyMinimum: "$250",
-      features: ["Basic RNG Testing", "Email Support", "Standard Reporting"]
-    },
-    {
-      tier: "Professional", 
-      volume: "1,001 - 10,000 tests/month",
-      pricePerTest: "$0.35",
-      monthlyMinimum: "$1,000",
-      features: ["Advanced RNG Testing", "Priority Support", "Custom Reporting", "API Access"]
-    },
-    {
-      tier: "Enterprise",
-      volume: "10,001+ tests/month",
-      pricePerTest: "Custom pricing",
-      monthlyMinimum: "Contact us",
-      features: ["Full Test Suite", "Dedicated Support", "Custom Integration", "White-label Options"]
-    }
-  ];
+  // Pricing table structure
+  const serviceTypes = ["New Game", "TOA", "Clone", "Recertification"];
+  const marketColumns = ["Base Market", "TOA 1", "TOA 2", "TOA 3"];
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -148,56 +127,49 @@ const MasterServiceAgreement = ({ onBack, onComplete }: MasterServiceAgreementPr
           <CardHeader>
             <CardTitle>Pricing Schedule</CardTitle>
             <CardDescription>
-              Review our service tiers and pricing structure
+              Review our service pricing structure
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              {pricingSchedule.map((tier, index) => (
-                <div key={index} className="border rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-semibold">{tier.tier}</h3>
-                    <Badge variant={index === 1 ? "default" : "secondary"}>
-                      {index === 1 ? "Popular" : tier.tier}
-                    </Badge>
-                  </div>
-                  
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Volume:</span>
-                      <span className="font-medium">{tier.volume}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Price per test:</span>
-                      <span className="font-medium">{tier.pricePerTest}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Monthly minimum:</span>
-                      <span className="font-medium">{tier.monthlyMinimum}</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-3">
-                    <p className="text-sm font-medium mb-2">Included features:</p>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {tier.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                          {feature}
-                        </li>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-border">
+                  <thead>
+                    <tr>
+                      <th className="border border-border p-3 bg-muted text-left font-semibold">
+                        Service Type
+                      </th>
+                      {marketColumns.map((column, index) => (
+                        <th key={index} className="border border-border p-3 bg-muted text-left font-semibold">
+                          {column}
+                        </th>
                       ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {serviceTypes.map((service, rowIndex) => (
+                      <tr key={rowIndex}>
+                        <td className="border border-border p-3 font-medium bg-muted/30">
+                          {service}
+                        </td>
+                        {marketColumns.map((_, colIndex) => (
+                          <td key={colIndex} className="border border-border p-3 text-center text-muted-foreground">
+                            -
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
               <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                <h4 className="font-medium mb-2">Additional Notes:</h4>
+                <h4 className="font-medium mb-2">Pricing Notes:</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• All prices are in USD and exclude applicable taxes</li>
-                  <li>• Volume discounts available for enterprise customers</li>
-                  <li>• Setup fees may apply for custom integrations</li>
-                  <li>• Billing is monthly in advance</li>
+                  <li>• All prices are in GBP and exclude applicable taxes</li>
+                  <li>• Pricing varies by service type and target market</li>
+                  <li>• Contact us for detailed pricing information</li>
+                  <li>• Custom packages available for enterprise clients</li>
                 </ul>
               </div>
 

@@ -15,12 +15,11 @@ interface PricingQuestionsProps {
 
 const PricingQuestions = ({ onBack, onComplete }: PricingQuestionsProps) => {
   const [formData, setFormData] = useState({
-    expectedVolume: '',
-    businessModel: '',
-    integrationTimeline: '',
-    budgetRange: '',
-    specificRequirements: '',
-    complianceNeeds: ''
+    gamesPerMonth: '',
+    rtpsPerGame: '',
+    gameTypes: '',
+    codingLanguages: '',
+    regulatedMarkets: ''
   });
   const { toast } = useToast();
 
@@ -34,7 +33,7 @@ const PricingQuestions = ({ onBack, onComplete }: PricingQuestionsProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.expectedVolume || !formData.businessModel || !formData.integrationTimeline) {
+    if (!formData.gamesPerMonth || !formData.rtpsPerGame || !formData.gameTypes) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
@@ -81,123 +80,56 @@ const PricingQuestions = ({ onBack, onComplete }: PricingQuestionsProps) => {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <Label htmlFor="expectedVolume">Expected Monthly Volume *</Label>
+              <Label htmlFor="gamesPerMonth">Games per month *</Label>
               <Input
-                id="expectedVolume"
-                value={formData.expectedVolume}
-                onChange={(e) => handleInputChange('expectedVolume', e.target.value)}
-                placeholder="e.g., 1000 tests per month"
+                id="gamesPerMonth"
+                value={formData.gamesPerMonth}
+                onChange={(e) => handleInputChange('gamesPerMonth', e.target.value)}
+                placeholder="e.g., 10"
                 required
               />
-              <p className="text-sm text-muted-foreground mt-1">
-                Approximate number of tests/transactions expected per month
-              </p>
             </div>
 
             <div>
-              <Label>Business Model *</Label>
-              <RadioGroup
-                value={formData.businessModel}
-                onValueChange={(value) => handleInputChange('businessModel', value)}
-                className="mt-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="b2b" id="b2b" />
-                  <Label htmlFor="b2b">B2B (Business to Business)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="b2c" id="b2c" />
-                  <Label htmlFor="b2c">B2C (Business to Consumer)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="b2b2c" id="b2b2c" />
-                  <Label htmlFor="b2b2c">B2B2C (Business to Business to Consumer)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="other" id="other" />
-                  <Label htmlFor="other">Other</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div>
-              <Label>Expected Integration Timeline *</Label>
-              <RadioGroup
-                value={formData.integrationTimeline}
-                onValueChange={(value) => handleInputChange('integrationTimeline', value)}
-                className="mt-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="immediate" id="immediate" />
-                  <Label htmlFor="immediate">Immediate (within 1 month)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="short" id="short" />
-                  <Label htmlFor="short">Short-term (1-3 months)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="medium" id="medium" />
-                  <Label htmlFor="medium">Medium-term (3-6 months)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="long" id="long" />
-                  <Label htmlFor="long">Long-term (6+ months)</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div>
-              <Label>Budget Range</Label>
-              <RadioGroup
-                value={formData.budgetRange}
-                onValueChange={(value) => handleInputChange('budgetRange', value)}
-                className="mt-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="under-10k" id="under-10k" />
-                  <Label htmlFor="under-10k">Under $10,000</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="10k-50k" id="10k-50k" />
-                  <Label htmlFor="10k-50k">$10,000 - $50,000</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="50k-100k" id="50k-100k" />
-                  <Label htmlFor="50k-100k">$50,000 - $100,000</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="over-100k" id="over-100k" />
-                  <Label htmlFor="over-100k">Over $100,000</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="discuss" id="discuss" />
-                  <Label htmlFor="discuss">To be discussed</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div>
-              <Label htmlFor="complianceNeeds">Compliance Requirements</Label>
-              <Textarea
-                id="complianceNeeds"
-                value={formData.complianceNeeds}
-                onChange={(e) => handleInputChange('complianceNeeds', e.target.value)}
-                placeholder="e.g., UKGC, MGA, Curacao, etc."
-                rows={3}
+              <Label htmlFor="rtpsPerGame">RTPs per game *</Label>
+              <Input
+                id="rtpsPerGame"
+                value={formData.rtpsPerGame}
+                onChange={(e) => handleInputChange('rtpsPerGame', e.target.value)}
+                placeholder="e.g., 5"
+                required
               />
-              <p className="text-sm text-muted-foreground mt-1">
-                List any specific regulatory compliance requirements
-              </p>
             </div>
 
             <div>
-              <Label htmlFor="specificRequirements">Additional Requirements</Label>
+              <Label htmlFor="gameTypes">Types of game *</Label>
+              <Input
+                id="gameTypes"
+                value={formData.gameTypes}
+                onChange={(e) => handleInputChange('gameTypes', e.target.value)}
+                placeholder="Slot, Crash, Mine, Plinko, etc"
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="codingLanguages">Coding languages</Label>
+              <Input
+                id="codingLanguages"
+                value={formData.codingLanguages}
+                onChange={(e) => handleInputChange('codingLanguages', e.target.value)}
+                placeholder="JavaScript, Python, C#, etc"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="regulatedMarkets">Regulated Markets</Label>
               <Textarea
-                id="specificRequirements"
-                value={formData.specificRequirements}
-                onChange={(e) => handleInputChange('specificRequirements', e.target.value)}
-                placeholder="Any specific features, customizations, or requirements..."
-                rows={4}
+                id="regulatedMarkets"
+                value={formData.regulatedMarkets}
+                onChange={(e) => handleInputChange('regulatedMarkets', e.target.value)}
+                placeholder="UK, Malta, Curacao, etc"
+                rows={3}
               />
             </div>
 

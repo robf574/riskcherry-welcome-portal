@@ -119,7 +119,7 @@ const OnboardingDashboard = () => {
               <span className="text-primary-foreground font-bold">🍒</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold">RiskCherry Onboarding</h1>
+              <h1 className="text-2xl font-bold">RiskCherry Client Onboarding - Lab</h1>
               <p className="text-muted-foreground">Welcome to your certification journey</p>
             </div>
           </div>

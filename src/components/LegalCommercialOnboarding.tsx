@@ -134,7 +134,7 @@ const LegalCommercialOnboarding = ({ onBack, onComplete }: LegalCommercialOnboar
               <Scale className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">Legal & Commercial Onboarding</h1>
+              <h1 className="text-2xl font-bold">RiskCherry Client Onboarding - Legal & Commercial</h1>
               <p className="text-muted-foreground">Complete legal agreements and commercial setup</p>
             </div>
           </div>

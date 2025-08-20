@@ -58,8 +58,10 @@ const OnboardingSelector = () => {
               <span className="text-primary-foreground font-bold">🍒</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold">RiskCherry Onboarding</h1>
-              <p className="text-muted-foreground">Choose your onboarding path</p>
+              <h1 className="text-3xl font-bold text-primary-foreground mb-4">RiskCherry Client Onboarding</h1>
+              <p className="text-primary-foreground/90 mb-8">
+                Your simple path to fast certifications & audits. We will guide you through your complete journey from legal & commercial to lab & technical onboarding where you will get Portal access to quickly place your first order! Let's get started!
+              </p>
             </div>
           </div>
           <Button variant="outline" onClick={handleLogout} className="gap-2">

@@ -16,6 +16,7 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
   const [formData, setFormData] = useState({
     entityName: '',
     registrationNumber: '',
+    registrationCountry: '',
     registeredAddress: '',
     signatoryName: '',
     signatoryTitle: '',
@@ -177,6 +178,16 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
                     value={formData.registrationNumber}
                     onChange={(e) => handleInputChange('registrationNumber', e.target.value)}
                     placeholder="Enter registration number (if applicable)"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="registrationCountry">Country of Registration</Label>
+                  <Input
+                    id="registrationCountry"
+                    value={formData.registrationCountry}
+                    onChange={(e) => handleInputChange('registrationCountry', e.target.value)}
+                    placeholder="United Kingdom"
                   />
                 </div>
 
