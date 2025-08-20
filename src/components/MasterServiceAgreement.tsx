@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, Scale, Download, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -166,12 +167,115 @@ const MasterServiceAgreement = ({ onBack, onComplete }: MasterServiceAgreementPr
               <div className="mt-6 p-4 bg-muted/50 rounded-lg">
                 <h4 className="font-medium mb-2">Pricing Notes:</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• All prices are in GBP and exclude applicable taxes</li>
+                  <li>• All prices are in EUR and exclude applicable taxes</li>
                   <li>• Pricing varies by service type and target market</li>
-                  <li>• Contact us for detailed pricing information</li>
-                  <li>• Custom packages available for enterprise clients</li>
                 </ul>
               </div>
+
+              <Accordion type="single" collapsible className="mt-6">
+                <AccordionItem value="pricing-definitions">
+                  <AccordionTrigger className="text-left font-medium">
+                    Pricing Definitions & Terms
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground space-y-4">
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        The following terms shall have the following definitions and shall be applied as follows for the purposes of this Schedule. For the avoidance of doubt, all deliverables, whether they are certificates, reports, evidences or similar, are included in the pricing (with the exception of Branded Certificate):
+                      </p>
+                      
+                      <div className="space-y-3">
+                        <div>
+                          <p className="font-medium text-foreground">New Game – Base Market:</p>
+                          <p>A single game version that uses a new math engine or new mechanic with one (1) included base RTP level/math model. If the game is built multiple times for different device types or operating systems, each build will be classified as a New Game. If there is more than one (1) base mechanic or RTP level, an additional RTP/mechanic fee will be applied per level/mechanic.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Additional RTP:</p>
+                          <p>The charge applied for each additional RTP level beyond the first within the New Game.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Clone/Skin/Version:</p>
+                          <p>A game where the front-end assets/theme are different from a game previously certified by RiskCherry, but the server-side code/math engine is identical to the prior game.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Additional Mechanics/Versions of Game Within the Order:</p>
+                          <p>Depending on how the game is coded and following binary and architecture review, additional mechanics may be priced as Additional RTP or as Clone/Skin. This will be agreed upon when the order is analysed on a case-by-case basis.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Entirely New Game Type:</p>
+                          <p>When an order is placed for a new game type other than a slot (or any other pre-agreed game type category), the Supplier will analyse and provide a new price/pricing category upon application if the game type is not deemed to fall into a pre-agreed category.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">ToA (Transfer of Approval):</p>
+                          <p>A transfer from the base market to another market or markets.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Recert:</p>
+                          <p>Required when a game previously certified by RiskCherry has had changes made to critical files or any element which would trigger the need for a new test certificate and/or conformity report to be issued.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Renewal:</p>
+                          <p>Required for markets that stipulate annual or other periodic renewal of the certificate. This rate applies only if there have been no changes to critical files or any elements which would trigger the need for a Recert. This cost applies per market. For avoidance of doubt, this only applies for the renewal of certificates previously issued by RiskCherry.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Retest Fee:</p>
+                          <p>Applicable in the following scenarios for any jurisdiction:</p>
+                          <ul className="ml-4 mt-2 space-y-1">
+                            <li>• If there is one (1) unsuccessful attempt to certify a game or RNG, which necessitates the Customer to perform an update to the math, backend, or server code.</li>
+                            <li>• If there are two (2) unsuccessful attempts to certify the game, which require the Customer to carry out front-end code deployments.</li>
+                          </ul>
+                          <p className="mt-2">Note that for each math/backend/server deployment made after the Order has been placed, and for each subsequent front-end deployment following the completion of one (1) front-end deployment allowed after the Order has been placed, the Retest Fee will be added to the Invoice to avoid any ambiguity.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Additional Simulation Fee:</p>
+                          <p>Applicable when the Provisions Package (logs, seeds, and related materials) necessary for validating RTP or Max Win is not fully provided at the time the Order is placed, or if the number of spins/game rounds required exceeds the standard limit, or if the provided data is insufficient for validation.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Included Simulation Runs:</p>
+                          <p>Up to 3 simulation runs of 100 million spins per RTP variant or Max Win scenario are included in the base price:</p>
+                          <ul className="ml-4 mt-2 space-y-1">
+                            <li><strong>Exceeding Simulation Runs/Game Rounds:</strong></li>
+                            <li className="ml-4">• If more than 3 simulation runs or 100 million spins per simulation run are required, additional simulation runs will incur a fee.</li>
+                            <li><strong>Highest Simulation Result:</strong></li>
+                            <li className="ml-4">• The highest result from RiskCherry's simulation runs will be used to amend the game help documentation if further provisions are not provided.</li>
+                            <li><strong>Incomplete Provisions:</strong></li>
+                            <li className="ml-4">• If the Provisions Package is incomplete or not supplied as required, additional simulation runs will be charged as outlined above.</li>
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Branded Report:</p>
+                          <p>Each report required for each operator ID listing every game or games certified by the Supplier for Italy & Brazil (which includes the Customer's details & details of their Client (typically Casino Operator/ Platform)). Charged once per operator ID needed and for every update to the report thereafter.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">RNG Certification:</p>
+                          <p>The base certification of the Random Number Generator (as such term is widely understood in the online gambling industry). Future jurisdiction-specific Terms of Agreement (TOA) for RNG Certification will be handled with pricing determined upon application.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">UK Annual Game Testing Audit (AGTA):</p>
+                          <p>The yearly review and testing of all certified games to ensure ongoing compliance with UK regulatory standards. The audit involves a thorough examination of game mechanics, RTP levels, and any updates or changes to the game since the previous certification. Price includes the conformity report. The Supplier can conduct the audit on products previously certified by any other ITL designated an approved test house by the UK Gambling Commission.</p>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground">Lithuania Platform Audit:</p>
+                          <p>The audit & certification of the RGS to certify against the update (to the standard stated in Schedule 2) dated February 2024.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
 
               <div className="flex items-center space-x-2 mt-4">
                 <input
