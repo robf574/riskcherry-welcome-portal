@@ -123,35 +123,25 @@ const OnboardingSelector = () => {
 
           {/* Lab Onboarding */}
           <Card 
-            className={`transition-all duration-200 animate-slide-up ${
-              legalCommercialCompleted 
-                ? 'cursor-pointer hover:shadow-lg' 
-                : 'opacity-50 cursor-not-allowed'
-            }`}
+            className="cursor-pointer transition-all duration-200 hover:shadow-lg animate-slide-up"
             style={{ animationDelay: '150ms' }}
-            onClick={() => legalCommercialCompleted && setCurrentSection('lab-onboarding')}
+            onClick={() => setCurrentSection('lab-onboarding')}
           >
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    legalCommercialCompleted ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {legalCommercialCompleted ? (
-                      <FlaskConical className="w-6 h-6" />
-                    ) : (
-                      <Lock className="w-6 h-6" />
-                    )}
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-primary-foreground">
+                    <FlaskConical className="w-6 h-6" />
                   </div>
                   <div>
                     <CardTitle className="text-xl">Lab Onboarding</CardTitle>
                     <CardDescription className="mt-1">
-                      Technical setup and certification process
+                      Lab Onboarding (would be closed until Legal/Commercial complete)
                     </CardDescription>
                   </div>
                 </div>
-                <Badge className={legalCommercialCompleted ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}>
-                  {legalCommercialCompleted ? 'Available' : 'Locked'}
+                <Badge className="bg-accent text-accent-foreground">
+                  Unlocked
                 </Badge>
               </div>
             </CardHeader>
@@ -170,14 +160,6 @@ const OnboardingSelector = () => {
                   <span>Demo and introduction call booking</span>
                 </div>
               </div>
-              {!legalCommercialCompleted && (
-                <div className="mt-4 p-3 bg-muted rounded-md">
-                  <p className="text-sm text-muted-foreground flex items-center gap-2">
-                    <Lock className="w-4 h-4" />
-                    Complete Legal & Commercial Onboarding first
-                  </p>
-                </div>
-              )}
             </CardContent>
           </Card>
         </div>
