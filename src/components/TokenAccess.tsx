@@ -16,7 +16,7 @@ const TokenAccess = ({ onTokenValidated }: TokenAccessProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Demo token for testing - in production this would validate against your system
-  const VALID_TOKEN = "RC-ONBOARD-2024";
+  const VALID_TOKEN = "TKTK";
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

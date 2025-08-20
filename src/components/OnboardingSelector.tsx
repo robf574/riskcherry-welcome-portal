@@ -52,26 +52,26 @@ const OnboardingSelector = () => {
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8 animate-fade-in">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center shadow-lg">
-              <img 
-                src="/lovable-uploads/bcc431a8-eb4f-49f8-bf3d-cfb3c5e7b3ec.png" 
-                alt="RiskCherry Logo" 
-                className="w-8 h-8 object-contain"
-              />
-            </div>
+        <div className="flex flex-col items-center mb-8 animate-fade-in text-center">
+          <div className="w-20 h-20 bg-card rounded-full flex items-center justify-center shadow-lg mb-6">
+            <img 
+              src="/lovable-uploads/bcc431a8-eb4f-49f8-bf3d-cfb3c5e7b3ec.png" 
+              alt="RiskCherry Logo" 
+              className="w-16 h-16 object-contain"
+            />
+          </div>
+          <div className="flex items-center justify-between w-full">
             <div>
               <h1 className="text-3xl font-bold text-card mb-2">RiskCherry Client Onboarding</h1>
               <p className="text-card/80 text-lg">
                 Your simple path to fast certifications & audits. We will guide you through your complete journey from legal & commercial to lab & technical onboarding where you will get Portal access to quickly place your first order! Let's get started!
               </p>
             </div>
+            <Button variant="secondary" onClick={handleLogout} className="gap-2 bg-card text-card-foreground hover:bg-card/90 ml-4">
+              <LogOut className="w-4 h-4" />
+              Logout
+            </Button>
           </div>
-          <Button variant="secondary" onClick={handleLogout} className="gap-2 bg-card text-card-foreground hover:bg-card/90">
-            <LogOut className="w-4 h-4" />
-            Logout
-          </Button>
         </div>
 
         {/* Onboarding Sections */}
