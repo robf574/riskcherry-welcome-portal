@@ -1,14 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from "react";
+import TokenAccess from "@/components/TokenAccess";
+import OnboardingDashboard from "@/components/OnboardingDashboard";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user has valid token on page load
+    const token = localStorage.getItem('riskcherry-onboard-token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+    setIsLoading(false);
+  }, []);
+
+  const handleTokenValidated = () => {
+    setIsAuthenticated(true);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <span className="text-primary-foreground font-bold text-sm">🍒</span>
+          </div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <TokenAccess onTokenValidated={handleTokenValidated} />;
+  }
+
+  return <OnboardingDashboard />;
 };
 
 export default Index;
