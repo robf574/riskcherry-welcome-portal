@@ -34,49 +34,40 @@ const DocumentLibrary = ({ onBack, onComplete }: DocumentLibraryProps) => {
 
   const documents: Document[] = [
     {
-      id: 'tech-specs',
-      title: 'Technical Specifications',
-      description: 'Complete technical requirements and API documentation for integration',
+      id: 'portal-user-guide',
+      title: 'Portal User Guide',
+      description: 'Complete guide for using the RiskCherry certification portal',
       type: 'pdf',
-      size: '2.4 MB',
+      size: '2.1 MB',
       category: 'technical',
       isRequired: true
     },
     {
-      id: 'compliance-guide',
-      title: 'Compliance Guidelines',
-      description: 'Regulatory compliance requirements and certification processes',
+      id: 'game-provisions-guide',
+      title: 'Game Provisions Guide',
+      description: 'Game certification requirements and provisions for compliance',
       type: 'pdf',
       size: '1.8 MB',
       category: 'compliance',
       isRequired: true
     },
     {
-      id: 'integration-manual',
-      title: 'Integration Manual',
-      description: 'Step-by-step guide for integrating with RiskCherry systems',
-      type: 'doc',
-      size: '650 KB',
-      category: 'integration',
+      id: 'rng-provisions-guide',
+      title: 'RNG Provisions Guide',
+      description: 'Random Number Generator testing and certification provisions',
+      type: 'pdf',
+      size: '1.5 MB',
+      category: 'technical',
       isRequired: true
     },
     {
-      id: 'best-practices',
-      title: 'Security Best Practices',
-      description: 'Recommended security practices and implementation guidelines',
-      type: 'guide',
-      size: '420 KB',
-      category: 'technical',
-      isRequired: false
-    },
-    {
-      id: 'testing-guide',
-      title: 'Testing & Certification Guide',
-      description: 'Comprehensive testing procedures and certification workflow',
+      id: 'ukgc-agta-guide',
+      title: 'UKGC AGTA Guide',
+      description: 'UK Gambling Commission Automated Gaming Technical Approval guidelines',
       type: 'pdf',
-      size: '1.2 MB',
+      size: '2.4 MB',
       category: 'compliance',
-      isRequired: false
+      isRequired: true
     }
   ];
 
