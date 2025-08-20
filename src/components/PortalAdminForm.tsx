@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowLeft, User, Mail, Globe, Plus, X, Save } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ArrowLeft, User, Mail, Globe, Plus, X, Save, Building } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,6 +19,9 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    studioName: '',
+    accountType: '', // 'single' or 'master'
+    subStudios: [''],
     ipAddresses: [''],
     additionalNotes: ''
   });
@@ -47,6 +51,28 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
     if (formData.ipAddresses.length > 1) {
       const newIps = formData.ipAddresses.filter((_, i) => i !== index);
       setFormData(prev => ({ ...prev, ipAddresses: newIps }));
+    }
+  };
+
+  const handleSubStudioChange = (index: number, value: string) => {
+    const newSubStudios = [...formData.subStudios];
+    newSubStudios[index] = value;
+    setFormData(prev => ({ ...prev, subStudios: newSubStudios }));
+  };
+
+  const addSubStudioField = () => {
+    if (formData.subStudios.length < 10) {
+      setFormData(prev => ({ 
+        ...prev, 
+        subStudios: [...prev.subStudios, ''] 
+      }));
+    }
+  };
+
+  const removeSubStudioField = (index: number) => {
+    if (formData.subStudios.length > 1) {
+      const newSubStudios = formData.subStudios.filter((_, i) => i !== index);
+      setFormData(prev => ({ ...prev, subStudios: newSubStudios }));
     }
   };
 
@@ -81,6 +107,26 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
       return;
     }
 
+    if (!formData.studioName.trim()) {
+      toast({
+        title: "Validation Error",
+        description: "Studio name is required",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.accountType) {
+      toast({
+        title: "Validation Error",
+        description: "Please select an account type",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     if (!validateEmail(formData.email)) {
       toast({
         title: "Validation Error",
@@ -91,6 +137,18 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
       return;
     }
 
+    if (formData.accountType === 'master') {
+      const validSubStudios = formData.subStudios.filter(studio => studio.trim());
+      if (validSubStudios.length === 0) {
+        toast({
+          title: "Validation Error",
+          description: "Please add at least one sub-studio for master accounts",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
+    }
 
     const validIps = formData.ipAddresses.filter(ip => ip.trim());
     if (validIps.length === 0) {
@@ -119,11 +177,13 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Store data (in real app, this would go to your backend)
-    localStorage.setItem('riskcherry-portal-admin', JSON.stringify({
+    const dataToStore = {
       ...formData,
       ipAddresses: validIps,
+      subStudios: formData.accountType === 'master' ? formData.subStudios.filter(studio => studio.trim()) : [],
       timestamp: new Date().toISOString()
-    }));
+    };
+    localStorage.setItem('riskcherry-portal-admin', JSON.stringify(dataToStore));
 
     toast({
       title: "Success!",
@@ -135,6 +195,7 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
   };
 
   const nonEmptyIps = formData.ipAddresses.filter(ip => ip.trim()).length;
+  const nonEmptySubStudios = formData.subStudios.filter(studio => studio.trim()).length;
 
   return (
     <div className="animate-fade-in">
@@ -187,6 +248,118 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
                   This will be used for your portal administrator profile
                 </p>
               </div>
+
+              {/* Studio Information */}
+              <div className="space-y-2">
+                <Label htmlFor="studioName" className="text-base font-medium">
+                  Studio Name *
+                </Label>
+                <div className="relative">
+                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="studioName"
+                    type="text"
+                    placeholder="Your Game Studio Ltd."
+                    value={formData.studioName}
+                    onChange={(e) => handleInputChange('studioName', e.target.value)}
+                    required
+                    className="h-12 pl-10"
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  The main studio or company name for this account
+                </p>
+              </div>
+
+              {/* Account Type */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Account Type *</Label>
+                <RadioGroup 
+                  value={formData.accountType} 
+                  onValueChange={(value) => handleInputChange('accountType', value)}
+                  className="space-y-3"
+                >
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted/50 transition-colors">
+                    <RadioGroupItem value="single" id="single" />
+                    <div className="flex-1">
+                      <Label htmlFor="single" className="cursor-pointer font-medium">
+                        Single Studio Account
+                      </Label>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        This studio name is your only studio
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-muted/50 transition-colors">
+                    <RadioGroupItem value="master" id="master" />
+                    <div className="flex-1">
+                      <Label htmlFor="master" className="cursor-pointer font-medium">
+                        Master Account with Sub-Studios
+                      </Label>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        This is a master account that manages multiple sub-studios
+                      </p>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* Sub-Studios (only shown if Master Account selected) */}
+              {formData.accountType === 'master' && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <Label className="text-base font-medium">Sub-Studio Names *</Label>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Add the names of studios under this master account
+                      </p>
+                    </div>
+                    <Badge variant="secondary">
+                      {nonEmptySubStudios} sub-studio{nonEmptySubStudios !== 1 ? 's' : ''} added
+                    </Badge>
+                  </div>
+
+                  <div className="space-y-3">
+                    {formData.subStudios.map((studio, index) => (
+                      <div key={index} className="flex gap-2">
+                        <div className="relative flex-1">
+                          <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                          <Input
+                            type="text"
+                            placeholder={`Sub-studio ${index + 1} name`}
+                            value={studio}
+                            onChange={(e) => handleSubStudioChange(index, e.target.value)}
+                            className="h-12 pl-10"
+                          />
+                        </div>
+                        {formData.subStudios.length > 1 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeSubStudioField(index)}
+                            className="h-12 px-3"
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {formData.subStudios.length < 10 && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={addSubStudioField}
+                      className="gap-2"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Add Another Sub-Studio
+                    </Button>
+                  )}
+                </div>
+              )}
 
               {/* Email */}
               <div className="space-y-2">
