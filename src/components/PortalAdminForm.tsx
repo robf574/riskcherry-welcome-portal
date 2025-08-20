@@ -386,7 +386,7 @@ const PortalAdminForm = ({ onBack, onComplete }: PortalAdminFormProps) => {
                   <div>
                     <Label className="text-base font-medium">IP Address Whitelist *</Label>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Add IP addresses that should have access to your portal
+                      Add IP addresses that should have access to our Portal
                     </p>
                   </div>
                   <Badge variant="secondary">
