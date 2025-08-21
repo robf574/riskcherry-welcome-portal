@@ -63,9 +63,31 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
       return;
     }
 
+    // Construct DocuSign PowerForm URL with form data
+    const baseUrl = "https://demo.docusign.net/Member/PowerFormSigning.aspx";
+    const params = new URLSearchParams({
+      PowerFormId: "cf23640d-388d-406c-9eb7-fa120ff4b152",
+      env: "demo",
+      acct: "fecbfe29-e9e5-4942-b9ff-7782c9cd5c32",
+      v: "2",
+      // Prefill form data
+      Signer1Name: formData.signatoryName,
+      Signer1Email: formData.signatoryEmail,
+      Signer1Title: formData.signatoryTitle,
+      Company: formData.entityName,
+      CompanyRegistrationNumber: formData.registrationNumber,
+      CompanyCountry: formData.registrationCountry,
+      CompanyAddress: formData.registeredAddress
+    });
+
+    const docusignUrl = `${baseUrl}?${params.toString()}`;
+
+    // Open DocuSign PowerForm in new tab
+    window.open(docusignUrl, '_blank');
+
     toast({
-      title: "NDA Completed",
-      description: "Your entity details have been saved and NDA accepted.",
+      title: "Redirecting to DocuSign",
+      description: "Please complete the NDA signing process in the new tab.",
     });
 
     setTimeout(() => {
