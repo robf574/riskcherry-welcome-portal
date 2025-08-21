@@ -18,26 +18,26 @@ All colors MUST be HSL.
     --popover-foreground: 215 15% 15%;
 
     /* RiskCherry Brand Colors */
-    --primary: 0 69% 47%; /* Cherry Red */
+    --primary: 348 81% 53%; /* Core Red #eb2448 */
     --primary-foreground: 0 0% 100%;
-    --primary-muted: 0 69% 57%;
+    --primary-muted: 348 81% 63%;
 
-    --secondary: 0 0% 98%;
-    --secondary-foreground: 215 15% 15%;
+    --secondary: 351 70% 47%; /* Secondary Red #bf2136 */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96%;
     --muted-foreground: 215 10% 50%;
 
-    --accent: 142 71% 45%; /* RiskCherry Green */
+    --accent: 142 61% 45%; /* Accent Green #2bb059 */
     --accent-foreground: 0 0% 100%;
-    --accent-muted: 142 71% 55%;
+    --accent-muted: 142 61% 55%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 92%;
     --input: 0 0% 92%;
-    --ring: 0 69% 47%;
+    --ring: 348 81% 53%;
 
     --radius: 0.5rem;
 
@@ -68,26 +68,26 @@ All colors MUST be HSL.
     --popover: 215 25% 10%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 69% 57%; /* Lighter cherry red for dark mode */
+    --primary: 348 81% 63%; /* Lighter core red for dark mode */
     --primary-foreground: 0 0% 100%;
-    --primary-muted: 0 69% 47%;
+    --primary-muted: 348 81% 53%;
 
-    --secondary: 215 25% 15%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 351 70% 57%; /* Lighter secondary red for dark mode */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 215 25% 15%;
     --muted-foreground: 215 10% 65%;
 
-    --accent: 142 71% 55%; /* Brighter green for dark mode */
+    --accent: 142 61% 55%; /* Brighter green for dark mode */
     --accent-foreground: 0 0% 100%;
-    --accent-muted: 142 71% 45%;
+    --accent-muted: 142 61% 45%;
 
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 215 25% 20%;
     --input: 215 25% 20%;
-    --ring: 0 69% 57%;
+    --ring: 348 81% 63%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
