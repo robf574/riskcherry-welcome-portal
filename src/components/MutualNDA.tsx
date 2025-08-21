@@ -54,10 +54,10 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
       return;
     }
 
-    if (!formData.ndaReviewed || !formData.ndaAccepted) {
+    if (!formData.ndaReviewed) {
       toast({
         title: "NDA Requirements",
-        description: "Please review and accept the Mutual NDA to continue.",
+        description: "Please download and review the Mutual NDA to continue.",
         variant: "destructive"
       });
       return;
@@ -89,6 +89,12 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
             <p className="text-card/80">Review agreement and provide entity details</p>
           </div>
         </div>
+      </div>
+
+      <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
+        <p className="text-sm text-foreground">
+          You can review the document and input your details below. Once complete, the executable version will be sent directly to the assigned signatory via DocuSign.
+        </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
@@ -126,23 +132,6 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
                   {formData.ndaReviewed && <CheckCircle2 className="w-4 h-4 ml-auto" />}
                 </Button>
               </div>
-
-              {formData.ndaReviewed && (
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      id="nda-accepted"
-                      checked={formData.ndaAccepted}
-                      onChange={(e) => handleInputChange('ndaAccepted', e.target.checked)}
-                      className="rounded border-gray-300"
-                    />
-                    <Label htmlFor="nda-accepted" className="text-sm">
-                      I have reviewed and accept the terms of the Mutual NDA
-                    </Label>
-                  </div>
-                </div>
-              )}
             </div>
           </CardContent>
         </Card>
@@ -244,7 +233,7 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
               <Button 
                 type="submit" 
                 className="w-full"
-                disabled={!formData.ndaReviewed || !formData.ndaAccepted}
+                disabled={!formData.ndaReviewed}
               >
                 Complete NDA Step
               </Button>
