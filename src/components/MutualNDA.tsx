@@ -45,7 +45,7 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.entityName || !formData.signatoryName || !formData.signatoryEmail) {
+    if (!formData.entityName || !formData.registrationNumber || !formData.registrationCountry || !formData.registeredAddress || !formData.signatoryName || !formData.signatoryTitle || !formData.signatoryEmail) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
@@ -156,33 +156,36 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
                 </div>
 
                 <div>
-                  <Label htmlFor="registrationNumber">Company Registration Number</Label>
+                  <Label htmlFor="registrationNumber">Company Registration Number *</Label>
                   <Input
                     id="registrationNumber"
                     value={formData.registrationNumber}
                     onChange={(e) => handleInputChange('registrationNumber', e.target.value)}
-                    placeholder="Enter registration number (if applicable)"
+                    placeholder="Enter registration number"
+                    required
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="registrationCountry">Country of Registration</Label>
+                  <Label htmlFor="registrationCountry">Country of Registration *</Label>
                   <Input
                     id="registrationCountry"
                     value={formData.registrationCountry}
                     onChange={(e) => handleInputChange('registrationCountry', e.target.value)}
                     placeholder="United Kingdom"
+                    required
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="registeredAddress">Registered Address</Label>
+                  <Label htmlFor="registeredAddress">Registered Address *</Label>
                   <Textarea
                     id="registeredAddress"
                     value={formData.registeredAddress}
                     onChange={(e) => handleInputChange('registeredAddress', e.target.value)}
                     placeholder="Enter your company's registered address"
                     rows={3}
+                    required
                   />
                 </div>
               </div>
