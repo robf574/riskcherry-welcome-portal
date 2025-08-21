@@ -91,11 +91,6 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
         </div>
       </div>
 
-      <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
-        <p className="text-sm text-foreground">
-          You can review the document and input your details below. Once complete, the executable version will be sent directly to the assigned signatory via DocuSign.
-        </p>
-      </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* NDA Document Section */}
@@ -106,7 +101,7 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
               Mutual Non-Disclosure Agreement
             </CardTitle>
             <CardDescription>
-              Please review and download the Mutual NDA document
+              You can review the document and input your details below. Once complete, the executable version will be sent directly to the assigned signatory via DocuSign.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -235,7 +230,7 @@ const MutualNDA = ({ onBack, onComplete }: MutualNDAProps) => {
                 className="w-full"
                 disabled={!formData.ndaReviewed}
               >
-                Complete NDA Step
+                Send to DocuSign
               </Button>
             </form>
           </CardContent>
