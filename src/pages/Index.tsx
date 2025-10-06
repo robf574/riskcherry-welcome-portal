@@ -23,9 +23,11 @@ const Index = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-            <span className="text-primary-foreground font-bold text-sm">🍒</span>
-          </div>
+          <img 
+            src="/riskcherry-logo.png" 
+            alt="RiskCherry Logo" 
+            className="h-12 w-auto mx-auto mb-4 animate-pulse"
+          />
           <p className="text-muted-foreground">Loading...</p>
         </div>
       </div>

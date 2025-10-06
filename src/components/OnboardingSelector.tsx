@@ -55,7 +55,7 @@ const OnboardingSelector = () => {
         <div className="flex flex-col items-center mb-8 animate-fade-in text-center">
           <div className="w-20 h-20 bg-card rounded-full flex items-center justify-center shadow-lg mb-6">
             <img 
-              src="/lovable-uploads/bcc431a8-eb4f-49f8-bf3d-cfb3c5e7b3ec.png" 
+              src="/riskcherry-logo.png" 
               alt="RiskCherry Logo" 
               className="w-16 h-16 object-contain"
             />

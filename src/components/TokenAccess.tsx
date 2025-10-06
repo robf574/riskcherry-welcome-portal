@@ -40,10 +40,12 @@ const TokenAccess = ({ onTokenValidated }: TokenAccessProps) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
       <div className="w-full max-w-md animate-fade-in">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">🍒</span>
-            </div>
+          <div className="inline-flex items-center gap-3 mb-4">
+            <img 
+              src="/riskcherry-logo.png" 
+              alt="RiskCherry Logo" 
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-semibold">RiskCherry</span>
           </div>
           <h1 className="text-3xl font-bold mb-2">Client Onboarding</h1>
